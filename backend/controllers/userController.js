@@ -35,10 +35,10 @@ const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
   //checks if user exists by finding a single user by email
-  const userExsits = await User.findOne({ email });
+  const userExist = await User.findOne({ email });
 
   //throws err if user exists, cus why would we want 2 emails in our system
-  if (userExsits) {
+  if (userExist) {
     res.status(400);
     throw new Error("User already exists");
   }
